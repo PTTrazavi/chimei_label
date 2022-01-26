@@ -1,0 +1,88 @@
+{% extends "base_generic.html" %}
+{% block title %}<title>Label Patient</title>{% endblock %}
+
+{% block sidebar %}
+<ul class="nav">
+  <li class="nav-item active ">
+    <a class="nav-link" href="#">
+      <i class="material-icons">content_paste</i>
+      <p>Label Patient</p>
+    </a>
+  </li>
+</ul>
+{% endblock %}
+
+{% block title2 %}
+  <a class="navbar-brand" href="javascript:void(0)">{{name}}</a>
+  {% if btn == 0 %}
+  <a href="/label/Pdetail/{{previous}}" class="btn btn-primary btn-round">Previous</a>
+  <a href="/label/Pdetail/{{next}}" class="btn btn-info btn-round">NEXT</a>
+  {% elif btn == 1 %}
+  <a href="/label/Pdetail/{{previous}}" class="btn btn-primary btn-round">Previous</a>
+  {% elif btn == 2 %}
+  <a href="/label/Pdetail/{{next}}" class="btn btn-info btn-round">NEXT</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-xl-3 col-lg-12">
+  <form action="" method="post" class="form">
+      {% csrf_token %}
+      <table>
+      {{form.as_table}}
+      </table>
+      <input type="submit" value="確認" class="submit">
+  </form>
+  </div>
+  <div class="col-xl-4 col-lg-12">
+    <div class="card card-chart">
+      <div class="card-header card-header-rose">
+        <div class="ct-chart">
+          <a href="{{ap}}" target="_blank"><img src="{{ap}}" alt="" width="240" height="240"></a>
+        </div>
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">AP: {{apl}}</h4>
+      </div>
+      <div class="card-footer">
+        <div class="stats">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-4 col-lg-12">
+    <div class="card card-chart">
+      <div class="card-header card-header-success">
+        <div class="ct-chart">
+          <a href="{{lat}}" target="_blank"><img src="{{lat}}" alt="" width="240" height="240"></a>
+        </div>
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">Lateral: {{latl}}</h4>
+      </div>
+      <div class="card-footer">
+        <div class="stats">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-6 col-lg-12">
+    <div class="card card-chart">
+      <div class="card-header card-header-info">
+        <div class="ct-chart">
+          <a href="{{ref}}" target="_blank"><img src="{{ref}}" alt="" width="400" height="400"></a>
+        </div>
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">Provided by Chimei</h4>
+      </div>
+      <div class="card-footer">
+        <div class="stats">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

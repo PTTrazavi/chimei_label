@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+    web:
+      build: .
+      ports:
+        - "15009:15009"
+        # (HOST:CONTAINER)
+      volumes:
+        - .:/app
+        # (HOST:CONTAINER)
+      restart: always
+      command: sh -c "python3 manage.py runserver 0.0.0.0:15009"
