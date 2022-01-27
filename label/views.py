@@ -140,3 +140,17 @@ def load_csv(request):
             latl = row[5],
             )
     return HttpResponseRedirect(reverse('patient_detail', kwargs={'pk':1}))
+
+@login_required
+def export_patient_csv(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="patients_export.csv"'
+
+    writer = csv.writer(response)
+    writer.writerow(['name','ref', 'ap', 'apl', 'lat', 'latl', 'date_of_update'])
+
+    rows = Patient.objects.all().values_list('name','ref', 'ap', 'apl', 'lat', 'latl', 'date_of_update')
+    for row in rows:
+        writer.writerow(row)
+
+    return response

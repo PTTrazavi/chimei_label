@@ -5,6 +5,7 @@ urlpatterns = [
     # path('', views.patient, name='patient'),
     path('Pdetail/<int:pk>', views.patient_detail, name='patient_detail'),
     path('loadcsv', views.load_csv, name='load_csv'),
+    path('exportcsv', views.export_patient_csv, name='export_patient_csv'),
 ]
 
 # Use static() to add url mapping to serve static files during development (only)
